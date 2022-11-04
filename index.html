@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <script src="js/bootstrap.min.js"></script>
+    <nav class="navbar navbar-expand-lg fixed-top bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">practica WeB 1</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbar" aria-expended="false" aria-label="toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ejercicio 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ejercicio 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ejercicio 3</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid bg bg-dark py-5">
+        <div class="container py-3" id="ej1">
+            <h1 class="text-center display-1 text-primary">
+                Suma de dos numeros enteros
+            </h1>
+            <form class="text-white">
+                <div classs="from-text mb-2">
+                    En este ejercicio realizaremos la operacion basica de la suma, ambos numeros se tomaran de un
+                    despectivo <code>input</code> de entrada numerica. Luego por medio de un <code>button</code> creado
+                    a partir de una etiqueta <code>a</code> se llamara a una funcion <code>Sumar()</code> que nos
+                    regrese el resultado en el <code>label</code> resultado
+                </div>
+                <div class="mb-3">
+                    <label form="txtNum1" class="form-label">Numero 1</label>
+                    <input type="number" class="form-control" id="txtNum1" value="0">
+                </div>
+                <div class="mb-3">
+                    <label form="txtNum2" class="form-label">Numero 2</label>
+                    <input type="number" class="form-control" id="txtNum2" value="0">
+                </div>
+                <button type="button" class="btn btn-success" onclick="Sumar()">Sumar</button>
+                <div class="mb-3">
+                    <label class="form-label" id="txtResult">Resultado:</label>
+                </div>
+            </form>
+        </div>
+        <div class="container py-3" id="ej1">
+            <h1 class="text-center display-1 text-primary">
+                operacion de dos numeros
+            </h1>
+            <form class="text-white">
+                <div class="mb-3">
+                    <label form="txt2Num1" class="form-label">Numero 1</label>
+                    <input type="number" class="form-control" id="txt2Num1" value="0">
+                </div>
+                <div class="mb-3">
+                    <label form="txt2Num1" class="form-label">Numero 2</label>
+                    <input type="number" class="form-control" id="txt2Num2" value="0">
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" aria-label="Operaciones" id="selectOp">
+                        <option selected value="0">Seleccione la operacion</option>
+                        <option value="1">Sumar</option>
+                        <option value="2">Restar</option>
+                        <option value="3">Multiplicar</option>
+                        <option value="4">Dividir</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-success" onclick="CalcularOperaciones()">Calcular</button>
+                <div class="mb-3">
+                    <label class="form-label" id="txt2Result">Resultado: </label>
+                </div>
+            </form>
+        </div>
+        <div class="container py-3" id="ej3">
+            <h1 class="text-center display-1 text-primary">
+                Calculo del salario Nicaraguense.
+            </h1>
+            <form class="text-white">
+                <div class="form-text mb-2">
+                    El Calculo del salario en Nicaragua se divide en dos partes, primero se calacula el
+                    <code>INSS</code> que es el <strong>7%</strong> del aslario base.Lueo calculamos el <code>IR</code>,
+                    que dependiendo del excedente anual el valor varia. Al restarle estos datos al salario base
+                    obtenemos nuestro Salario Neto.
+
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="inputSalario" placeholder="Ingrese el salario">
+                    <label for="inputSalario" class="text-secondary">Salario</label>
+                </div>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-success" onclick="CalcularSalario()">Calcular Salario</button>
+                </div>
+                <div class="mb-3">
+                    <label id="txtINSS" class="form-label">INSS: </label>
+                </div>
+                <div class="mb-3">
+                    <label id="txtIR" class="form-label">IR: </label>
+                </div>
+                <div class="mb-3">
+                    <label id="txtSalNeto" class="form-label">Salario Neto: </label>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function Sumar() {
+            var num1 = parseInt(document.getElementById('txtNum1').value);
+            var num2 = parseInt(document.getElementById('txtNum2').value);
+            document.getElementById('txtResult').innerHTML = 'La suma es: ' + (num1 + num2);
+        }
+        function CalcularOperaciones() {
+            let op = document.getElementById('selectOp').value;
+            let num1 = parseInt(document.getElementById('txt2Num1').value);
+            let num2 = parseInt(document.getElementById('txt2Num2').value);
+            if (op == 0) {
+                alert("Seleccione primero la operacion");
+            }
+            else if (op == 1) {
+                document.getElementById('txt2Result').innerHTML = "La suma es: " + (num1 + num2);
+            }
+            else if (op == 2) {
+                document.getElementById('txt2Result').innerHTML = "La resta es: " + (num1 + num2);
+            }
+            else if (op == 3) {
+                document.getElementById('txt2Result').innerHTML = "El producto es: " + (num1 + num2);
+            }
+            else if (op == 4) {
+                document.getElementById('txt2Result').innerHTML = "La divison es: " + (num1 + num2);
+            }
+
+        }
+        function CalcularIR(SalBruto) {
+            let SalBrutoAnual = SalBruto * 12;
+            let IRAnual = 0;
+            if (SalBrutoAnual <= 100000) IRAnual = 0;
+            else if (SalBrutoAnual > 100000 && SalBrutoAnual <= 200000)
+                IRAnual = (SalBrutoAnual - 100000) * 0.15;
+            else if (SalBrutoAnual > 200000 && SalBrutoAnual <= 350000)
+                IRAnual = ((SalBrutoAnual - 200000) * 0.20) + 15000;
+            else if (SalBrutoAnual > 35000 && SalBrutoAnual <= 500000)
+                IRAnual = ((SalBrutoAnual - 350000) * 0.25) + 45000;
+            else
+                IRAnual = ((SalBrutoAnual - 500000) * 0.30) + 82500;
+            return IRAnual / 12;
+
+        }
+        function CalcularSalario() {
+            let SalBase = parseFloat(document.getElementById('inputSalario').value);
+            let inss = SalBase * 0.07;
+            let ir = CalcularIR(SalBase - inss);
+            let SalNeto = SalBase - inss - ir;
+            document.getElementById('txtINSS').innerHTML = "INSS: C$" + inss.toFixed(2);
+            document.getElementById('txtIR').innerHTML = "IR: C$" + ir.toFixed(2);
+            document.getElementById('txtSalNeto').innerHTML = "Salario Neto C$" + SalNeto.toFixed(2);
+        }
+    </script>
+
+    <div class="container-fluid bg-dark text-white text-center">
+        <div class="row mb-4">
+            <h2 class="display-4">Tecnico Medio en Programacion- 11mo Grado</h2>
+        </div>
+        <div class="row mb-3">
+            <h2 class="display-6">Integrantes</h2>
+            <div class="col"> Genesis Martinez</div>
+            <div class="col"> Azucena Sanchez</div>
+        </div>
+        <div class="row">
+            <p>
+                &copy; Todos los derechos reservados- 2022
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
